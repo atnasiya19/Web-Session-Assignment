@@ -45,7 +45,7 @@ Web-Session-Assignment/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/atnasiya19/Web-Session-Assignment.git
+git clone https://github.com/fgmaii/Web-Session-Assignment.git
 ```
 
 ### 2. Navigate to the project directory
@@ -92,5 +92,5 @@ Computer Networks
 
 ## Repository
 
-[Web-Session-Assignment](https://github.com/atnasiya19/Web-Session-Assignment)
+[Web-Session-Assignment](https://github.com/fgmaii/Web-Session-Assignment)
 
