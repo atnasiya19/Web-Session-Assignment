@@ -69,7 +69,7 @@ def dashboard():
 
     # Read the session cookie sent by the browser
     session_id = request.cookies.get("session_id")
-
+    
     # Check whether the session exists on the server
     session_data = active_sessions.get(session_id)
 
@@ -84,8 +84,23 @@ def dashboard():
         del active_sessions[session_id]
         return redirect(url_for("home"))
 
-    return render_template("dashboard.html", username=session_data["username"])
+    remaining_time = SESSION_TIMEOUT - age
 
+    return render_template(
+    "dashboard.html",
+    username=session_data["username"],
+    remaining_time=max(0, remaining_time)
+    )
 
+@app.route("/logout")
+def logout():
+    session_id = request.cookies.get("session_id")
+
+    if session_id:
+        active_sessions.pop(session_id, None)
+
+    response = make_response(redirect(url_for("home")))
+    response.delete_cookie("session_id", path="/")
+    return response
 if __name__ == "__main__":
     app.run(debug=True)

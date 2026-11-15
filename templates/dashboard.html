@@ -18,6 +18,27 @@
 
             <p>Your session is currently active.</p>
 
+<p id="timer">Your session expires in 60 seconds.</p>
+
+<script>
+    let remainingTime = {{ remaining_time | int }};
+
+    const timer = document.getElementById("timer");
+
+    const countdown = setInterval(function () {
+        remainingTime--;
+
+        if (remainingTime <= 0) {
+            clearInterval(countdown);
+            timer.textContent = "Session expired. Logging out...";
+            window.location.href = "/logout";
+        } else {
+            timer.textContent =
+                "Your session expires in " + remainingTime + " seconds.";
+        }
+    }, 1000);
+</script>
+
             <br>
             <a href="/logout" style="display: inline-block; padding: 10px 20px; background-color: #dc3545; color: black; 
                 text-decoration: none; border-radius: 5px; font-weight: bold; text-align: center; margin-top: 15px;">
