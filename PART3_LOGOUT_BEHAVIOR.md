@@ -34,5 +34,3 @@ def dashboard():
         return redirect(url_for("home"))
 
 ***
-
-How does that look fo
