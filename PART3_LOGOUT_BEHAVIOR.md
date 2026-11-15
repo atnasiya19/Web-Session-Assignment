@@ -35,7 +35,4 @@ def dashboard():
 
 ***
 
-
-If you want to make it look even better, you can take screenshots of your own test (showing the Console and the redirect back to login) and save them in the `screenshots` folder, just like your teammate did for Part 2! You can add them to the markdown file using `![My Screenshot](screenshots/your_image_name.png)`.
-
-How does that look for your part of the assignment?
+How does that look fo
