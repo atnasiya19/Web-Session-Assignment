@@ -40,16 +40,6 @@ The experiment was carried out in Google Chrome with Developer Tools open and th
 
 These observations are consistent with an earlier command-line test using curl, in which the old cookie was deliberately sent again after expiry. The dashboard returned 200 at 0 and 30 seconds, and 302 to the login page at about 65 seconds even though the identifier was still presented. A fresh login after expiry succeeded and produced a new, valid session.
 
-### Screenshots
-
-| File | Shows |
-|---|---|
-| [`1_set_cookie_login.png`](screenshots/1_set_cookie_login.png) | `POST /login` returning 302 with `Set-Cookie: … Max-Age=60; HttpOnly; Path=/; SameSite=Lax` |
-| [`2_application_session_id.png`](screenshots/2_application_session_id.png) | The `session_id` cookie stored by Chrome, expiring at 15:00:36, HttpOnly, SameSite=Lax |
-| [`3_network_dashboard_200.png`](screenshots/3_network_dashboard_200.png) | Reload 4 s after login: `GET /dashboard` 200 OK, with the cookie sent |
-| [`3_dashboard_page.png`](screenshots/3_dashboard_page.png) | The dashboard returned by that request ("Your session is currently active.") |
-| [`4_network_dashboard_302.png`](screenshots/4_network_dashboard_302.png) | Reload 71 s after login: `GET /dashboard` 302 to `/`, with no cookie sent |
-
 ## Behaviour after expiry
 
 The two tests show both layers of the timeout working. In the browser, the cookie's expiry time of 15:00:36 had passed by the time of the final reload. Chrome had therefore already deleted the cookie and sent the request without any `Cookie` header. The server found no session identifier and redirected the user to the login page.

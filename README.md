@@ -33,11 +33,9 @@ Web-Session-Assignment/
 ├── static/
 │   └── style.css
 │
-├── templates/
-│   ├── index.html
-│   └── dashboard.html
-│
-└── screenshots/
+└── templates/
+    ├── index.html
+    └── dashboard.html
 ```
 
 ## Installation and Setup
